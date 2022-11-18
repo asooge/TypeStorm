@@ -1,2 +1,2 @@
-export * from "./calculateResults";
-export * from "./sortRandom";
+export * from './calculateResults';
+export * from './sortRandom';

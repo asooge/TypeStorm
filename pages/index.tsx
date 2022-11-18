@@ -1,11 +1,11 @@
-import styles from "../styles/Home.module.css";
-import { Footer } from "components/Footer";
-import { Head } from "components/Head";
-import { useWordBank, useTimer, useTypeStorm } from "lib/hooks";
-import type { GetServerSideProps, NextPage } from "next";
-import { getResults, sortRandom } from "lib/utils";
-import { wordList } from "lib/constants";
-import { useMemo } from "react";
+import styles from '../styles/Home.module.css';
+import { Footer } from 'components/Footer';
+import { Head } from 'components/Head';
+import { useWordBank, useTimer, useTypeStorm } from 'lib/hooks';
+import type { GetServerSideProps, NextPage } from 'next';
+import { getResults, sortRandom } from 'lib/utils';
+import { wordList } from 'lib/constants';
+import { useMemo } from 'react';
 
 interface Props {
   randomWords: string[];
@@ -67,11 +67,11 @@ const Home: NextPage<Props> = ({ randomWords }) => {
             <h2>Here are the words you typed correctly and incorrectly: </h2>
             {wordBank.slice(0, userWords.length).map((word, i) => {
               if (word === userWords[i]) {
-                return <span key={word}>{word + " ✅ "}</span>;
+                return <span key={word}>{word + ' ✅ '}</span>;
               } else {
                 return (
                   <span key={word}>
-                    {word + " ❌ " + "you typed: " + userWords[i]}
+                    {word + ' ❌ ' + 'you typed: ' + userWords[i]}
                   </span>
                 );
               }
@@ -86,7 +86,7 @@ const Home: NextPage<Props> = ({ randomWords }) => {
 
             <div>
               <span>Timer: </span>
-              <span>{currentTime + " / 60"}</span>
+              <span>{currentTime + ' / 60'}</span>
             </div>
             <input
               disabled={isFinished}
@@ -98,10 +98,10 @@ const Home: NextPage<Props> = ({ randomWords }) => {
                 <span
                   key={word}
                   style={
-                    i === index ? { color: "blue", fontWeight: "500" } : {}
+                    i === index ? { color: 'blue', fontWeight: '500' } : {}
                   }
                 >
-                  {word}{" "}
+                  {word}{' '}
                 </span>
               ))}
             </div>

@@ -1,5 +1,5 @@
-import Image from "next/image";
-import styles from "../styles/Home.module.css";
+import Image from 'next/image';
+import styles from '../styles/Home.module.css';
 
 export const Footer: React.FC = () => {
   return (
@@ -16,7 +16,7 @@ export const Footer: React.FC = () => {
             alt="Vercel Logo"
             width={24}
             height={24}
-            style={{ borderRadius: "50%", marginLeft: "4px" }}
+            style={{ borderRadius: '50%', marginLeft: '4px' }}
           />
         </span>
       </a>

@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect } from 'react';
 
 export const useTimer = (seconds: number) => {
   const [intervalId, setIntervalId] = useState<NodeJS.Timeout>();
