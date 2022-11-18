@@ -1,5 +1,6 @@
 import type { TypeStormResults } from 'lib/utils';
 import styles from 'styles/Home.module.css';
+import NextImage from 'next/image';
 
 interface ContentProps {
   currentIndex: number;
@@ -36,6 +37,9 @@ export const Content: React.FC<ContentProps> = ({
       <p className={styles.description}>
         Here are your results: {trueCPM} CPM = {trueWPM} WPM
       </p>
+      <button onClick={tryAgain} className={styles.button}>
+        Try Again!
+      </button>
       <p>Number of correct words: {correctWordCount}</p>
       <p>Number of incorrect words: {wordCount - correctWordCount}</p>
       <p>Raw CPM including incorrect words: {rawCPM}</p>
@@ -53,31 +57,69 @@ export const Content: React.FC<ContentProps> = ({
           );
         }
       })}
-      <button onClick={tryAgain}>Try Again!</button>
     </>
   ) : (
     <>
-      <p className={styles.description}>
-        60 second timer will start on your first keystroke
-      </p>
+      <div
+        style={{
+          display: 'flex',
+          alignItems: 'center',
+        }}
+      >
+        <p className={styles.description}>
+          60 second timer will start on your first keystroke
+        </p>
+        <NextImage
+          height={50}
+          width={50}
+          src={'/storm-icon.png'}
+          alt={'storm cloud'}
+          style={{
+            margin: '8px',
+          }}
+        />
+      </div>
 
-      <div>
-        <span>Timer: </span>
-        <span>{currentTime + ' / 60'}</span>
+      <div
+        style={{
+          display: 'flex',
+          alignItems: 'center',
+        }}
+      >
+        <NextImage
+          height={32}
+          width={32}
+          src={'/hourglass.png'}
+          alt={'hourglass'}
+        />
+        <label style={{ margin: '8px' }}>{`Timer: ${currentTime} / 60`}</label>
+        <progress
+          value={currentTime}
+          max={60}
+          style={{
+            height: '32px',
+          }}
+        ></progress>
       </div>
       <input
+        autoFocus
+        type={'text'}
         disabled={isFinished}
         value={inputValue}
         onChange={handleUserInput}
-      ></input>
-      <div>
+        placeholder={currentIndex ? '' : 'start typing to begin'}
+        style={{
+          borderRadius: '6px',
+          height: '42px',
+          width: '240px',
+          padding: '12px',
+          margin: '8px',
+          fontSize: '18px',
+        }}
+      />
+      <div style={{ maxWidth: '900px', fontSize: '18px', margin: '24px' }}>
         {wordBank.map((word, i) => (
-          <span
-            key={word}
-            style={
-              i === currentIndex ? { color: 'blue', fontWeight: '500' } : {}
-            }
-          >
+          <span key={word} style={i === currentIndex ? { color: 'blue' } : {}}>
             {word}{' '}
           </span>
         ))}
